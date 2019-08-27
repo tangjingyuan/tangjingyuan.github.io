@@ -11,7 +11,7 @@ tags:
 - Royal Clash
 ---
 
-最近在开发 Instant App 与发布的时候遇到了很多问题，踩了很多坑。网上分享的文章，大多都是以新建一个 Instant App 为例，介绍了 Instant App 的结构等等，很少有基于现有 App 开发 Instant App 与发布的分享，毕竟 Instant App 发布的一个前提条件就是已经在 Play Sotre 中发布了完整版应用。所以我决定将自己开发与发布过程中的经验分享出来。文章一共会分为三篇：
+最近在开发 Instant App 与发布的时候遇到了很多问题，踩了很多坑。网上分享的文章，大多都是以新建一个 Instant App 为例，介绍了 Instant App 的结构等等，很少有基于现有 App 开发 Instant App 与发布的分享，毕竟 Instant App 发布的一个前提条件就是已经在 Play Sotre 中发布了完整版应用。所以我想将自己开发与发布过程中的经验分享出来。文章一共会分为三篇：
 
 1. [对 Instant App 进行介绍并讨论 Instant App 在从产品层面上值不值得开发（包括适合哪些应用开发）](/2019/08/24/android-instant-app-from-dev-to-publish-1/)
 2. [介绍 Instant App 基于当前项目如何开发](/2019/08/25/android-instant-app-from-dev-to-publish-2/)
@@ -31,17 +31,19 @@ Instant App 开发技术与 Native App 一致，使用 Java/Kotlin 进行开发�
 
 在开发 Instant App 之前，我们特意调研了下有哪些应用已经推出了 Instant App。令我颇感意外的是，爱奇艺也推出了 Instant App，我原本觉得只有海外或者是像我们一样专做海外市场的 App 才会推出 Instant App。
 
-![image](/images/ming_xue.gif)
-
 这里简单列出 Tapatalk（我们自己的产品）、Vimeo、爱奇艺、皇室战争这几个推出了 Instant App 的应用在 Play Store 的截图(爱奇艺的 Instant App 刚在 Play Store 看不到，就不贴了)， 大家可以自行体验。
 
 ![InstanApp-Case](/images/instant_app_cases.jpg)
 
 ## 用户安装与打开的路径
 
->并不是海外每个国家与地区的每个用户、设备都可以安装使用 Instant App，具体哪些地区哪些设备支持，可以自行 Google
+>并不是海外每个国家与地区的每个用户、设备都可以安装使用 Instant App。具体哪些地区哪些设备支持，可以自行 Google
+
+用户在**设置->Google 和 Play Store->设置**中都有一个 Google Play 免安装体验的选项开关。这个开关需要说明的是初始化状态是关闭状态，但其实是 enable 的，在支持 Instant App 的地区和设备上，用户点击 Instant App 捕捉的链接是会直接安装打开 Instant App 的，如果用户打开后又关闭，那么就会真的关闭。这时用户在商店中搜索应用名是无法看到**立即试用**的按钮，点击支持捕捉的链接也无法再弹出 Instant App。
+
+![Google-Instant-Switch](/images/instant_app_switch.jpg)
  
-目前一共可以分为三个路径：
+目前用户主要通过三个路径来接触到 Instant App：
 
 - Try Now Button in Play Store
 Try Now Button 其实就是上图中的**立即试用**按钮，用户通过在 Play Store 中输入关键词搜索到应用或者从外部点击 market链接跳转到 Play Store， 可以看到 Try Now Button。
