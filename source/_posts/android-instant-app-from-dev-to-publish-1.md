@@ -48,7 +48,8 @@ Instant App 开发技术与 Native App 一致，使用 Java/Kotlin 进行开发�
 - Try Now Button in Play Store
 Try Now Button 其实就是上图中的**立即试用**按钮，用户通过在 Play Store 中输入关键词搜索到应用或者从外部点击 market链接跳转到 Play Store， 可以看到 Try Now Button。
 - Browser
-用户通过在浏览器点击 Google Search 结果中符合 Instant App Manifest 文件中注册的 host、pathPattern、pathPrefix 等规则的链接。
+用户通过在浏览器点击 Google Search 结果中符合 Instant App Manifest 文件中注册的 host、pathPattern、pathPrefix 等规则的链接。**这里需要特别说明一下**，我 Google 了很久也没找到怎么让搜索结果中的链接点击后一定能打开 Instant App。我目前只发现同样符合 Instant App 捕捉规则的链接，只有 AMP 链接点击后才能打开 Instant App，非 AMP 链接是无法打开的。有知道如何保证 Google 搜索结果中的链接点击一定能打开 Instant App 的同学，烦请告诉我，我也很好奇。
+
 - Other
 用户在 Telegram、Gmail 等第三方应用中点击了符合 Instant App Manifest 文件中注册的 host、pathPattern、pathPrefix 等规则的链接。
 
